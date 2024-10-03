@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nazar Quiz</title>
+</head>
+<body>
+    <h1>Nazar Quiz</h1>
+    <form method="POST">
+        {% set counter = 1 %}
+        {% for question in questions %}
+            <p>{{ counter }}. {{ question.question }}</p>
+            {% for option in question.options %}
+                <label>
+                    <input type="radio" name="question-{{ loop.index }}" value="{{ option[1] }}">
+                    {{ option[0] }}
+                </label><br>
+            {% endfor %}
+            {% set counter = counter + 1 %}
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
